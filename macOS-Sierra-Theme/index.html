@@ -2,16 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	{block:Hidden}
-    	<meta name="color:Background" content="#ffffff"/>
-    	<meta name="image:Background" content="http://static.tumblr.com/ly7no2u/yUWogwl7d/mac-wallpaper-13.jpg"/>
-    	<meta name="if:Background Image" content="1"/>
-    	<meta name="if:Show Note Count" content="0"/>
-    	<meta name="if:Show Caption" content="0"/>
+    <meta name="color:Background" content="#ffffff"/>
+    <meta name="image:Background" content="http://static.tumblr.com/ly7no2u/yUWogwl7d/mac-wallpaper-13.jpg"/>
+    <meta name="if:Background Image" content="1"/>
+    <meta name="if:Show Note Count" content="0"/>
+    <meta name="if:Show Caption" content="0"/>
 	{/block:Hidden}
 
-    	<title>{block:SearchPage}{lang:Search results for SearchQuery} - 	{/block:SearchPage}{block:PostSummary}{PostSummary} - {/block:PostSummary}{Title}</title>
+    <title>{block:SearchPage}{lang:Search results for SearchQuery} - 	{/block:SearchPage}{block:PostSummary}{PostSummary} - {/block:PostSummary}{Title}</title>
 
-    	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
 	<link rel="shortcut icon" href="{Favicon}" />
 {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
 
@@ -520,7 +520,6 @@
         background-size: auto 25px;
         }  
     .video .meta .icon{
-
         background-image: url('http://static.tumblr.com/ly7no2u/aGGogrtl7/video-icon.png');
         }
     .banner-bottom.video{
@@ -1113,7 +1112,10 @@
                         </div>
                     {/block:Chat}      
             
-                    <div class="banner-bottom {PostType}"></div>
+                    <div class="banner-bottom {PostType}">
+                        <div class="banner-right"></div>
+                        <div class="banner-left"></div>
+                    </div>
                     
                     {block:IfShowCaption}
                         {block:Caption}
