@@ -326,7 +326,11 @@
         text-decoration: none;
         border: 0;
         }  
-     
+     .post-body img{
+        width: 100%;
+        overflow: hidden;
+        }  
+	    
      /* Photo */ 
      
      .imageWrapper{
@@ -549,7 +553,7 @@
                 
                         {block:Photoset}
                             {block:Photos}
-     x                       <img src="{PhotoURL-500}" width="100%" class="photoset-img" alt="{PhotoAlt}" />  
+     	                      <img src="{PhotoURL-500}" width="100%" class="photoset-img" alt="{PhotoAlt}" />  
                                 {block:Caption}
                                     <div class="caption">
                                         {Caption}
