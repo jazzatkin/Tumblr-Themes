@@ -145,6 +145,9 @@
             margin-right: 10px;
             }
         }
+    .folder.description{
+        display: none;
+        }
     .folder img{
         width: 100%;
         margin-bottom: 5px;
@@ -907,8 +910,12 @@
 		<div id="head">
 			<div class="folder">
 				<a href="/"><img src="http://static.tumblr.com/ly7no2u/J2Cogr10i/folder.png" alt="{Title}">{Title}</a>
-            </div>
-            
+            		</div>
+			{block:Description}
+				<div class="folder description">
+					<a href="/"><img src="http://static.tumblr.com/ly7no2u/J2Cogr10i/folder.png" alt="{Description}">{Description}</a>
+            			</div>
+            		{/block:Description}
             {block:HasPages}
             	{block:Pages}
             		<div class="folder">
@@ -969,7 +976,7 @@
                             </div>
                         </div> <!-- End Meta -->
                         <div class="content-container">
-                            <img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" width="100%"/>
+                            <a href="{block:PermalinkPage}{LinkURL}{/block:PermalinkPage}{block:IndexPage}{Permalink}{/block:IndexPage}" alt="{PhotoAlt}"><img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" width="100%"/></a>
                         </div>
                     {/block:Photo}
     
@@ -993,7 +1000,7 @@
                                 <div class="custom-pager"></div>
                                 {block:Photos}
                                     <div class="slideshow-container">
-                                        <img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" width="100%" class="photoset-image"/>
+                                        <a href="{block:PermalinkPage}{LinkURL}{/block:PermalinkPage}{block:IndexPage}{Permalink}{/block:IndexPage}" alt="{PhotoAlt}"><img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" width="100%" class="photoset-image"/></a>
                                     </div>
                                 {/block:Photos}
                             </div>
