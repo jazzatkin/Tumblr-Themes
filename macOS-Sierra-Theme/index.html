@@ -204,7 +204,7 @@
         height: 11px;
         background-image: url(http://static.tumblr.com/ly7no2u/lxZop6s6c/stickies-icon.png);
         background-size: 100% auto;
-    }
+        }
      @media screen and (max-width: 900px){
          .stickies-container{
              width: 100%;
@@ -897,7 +897,8 @@
     .post-notes{
         width: 500px;
         overflow: hidden;
-        border: 1px solid #bba824;
+        border: 2px solid #b9a937;
+        font-family: Lucida Grande;
         background-color: #fef3a1;
         position: relative;
         float: right;
@@ -909,11 +910,12 @@
             }
         }
     .post-notes-header{
-        height: 10px;
+        height: 15px;
         width: 100%;
         display: block;
-        border-bottom: 1px solid #bba824;
-        background-color: #fde84f;
+        background-color: #fbe960;
+        box-sizing:border-box;
+        border-bottom: 2px solid #b9a937;
         }
      ol.notes {
         padding: 10px 0px;
@@ -924,7 +926,7 @@
     ol.notes li.note {
         border: 0;
         padding: 0px 10px 5px 10px;
-        font-family: arial;
+        font-family: Lucida Grande;
         font-size: 12px;
         font-weight: normal;
         }
@@ -1199,7 +1201,7 @@
                 {block:PostNotes}
                     <div class="post-notes-container">
                         <div class="post-notes">
-                            <div class="post-notes-header"></div>
+                            <div class="post-notes-header"><div class="stickies-icon"></div></div>
                             {PostNotes}
                         </div>
                     </div>
