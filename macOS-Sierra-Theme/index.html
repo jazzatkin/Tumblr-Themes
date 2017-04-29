@@ -955,7 +955,7 @@
 	<div id="wrap">
 		<div id="head">
 			<div class="folder">
-				<a href="{LinkURL}"><img src="http://static.tumblr.com/ly7no2u/J2Cogr10i/folder.png" alt="{Title}">{Title}</a>
+				<a href="/"><img src="http://static.tumblr.com/ly7no2u/J2Cogr10i/folder.png" alt="{Title}">{Title}</a>
             </div>
              
             {block:HasPages}
@@ -1034,7 +1034,8 @@
                             </div>
                         </div> <!-- End Meta -->
                         <div class="content-container">
-                            <img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" width="100%"/>
+                            {LinkOpenTag}
+                            <img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" width="100%"/>{LinkCloseTag}
                         </div>
                     {/block:Photo}
     
