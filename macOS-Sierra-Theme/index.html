@@ -1034,8 +1034,8 @@
                             </div>
                         </div> <!-- End Meta -->
                         <div class="content-container">
-                            {LinkOpenTag}
-                            <img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" width="100%"/>{LinkCloseTag}
+                            {block:PermalinkPage}{LinkOpenTag}{/block:PermalinkPage}
+                            <img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" width="100%"/>{block:PermalinkPage}{LinkCloseTag}{/block:PermalinkPage}
                         </div>
                     {/block:Photo}
     
