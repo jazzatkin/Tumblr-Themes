@@ -5,6 +5,7 @@
     <meta name="color:Background" content="#ffffff"/>
     <meta name="image:Background" content="http://static.tumblr.com/ly7no2u/yUWogwl7d/mac-wallpaper-13.jpg"/>
     <meta name="if:Background Image" content="1"/>
+    <meta name="if:Show Description" content="1"/>
     <meta name="if:Show Note Count" content="0"/>
     <meta name="if:Show Caption" content="0"/>
 	{/block:Hidden}
@@ -82,7 +83,7 @@
             }
         }
         
-     /* SIDEBAR */
+     /* GENERAL */
 	 
     p{
 		padding: 0;
@@ -145,9 +146,6 @@
             margin-right: 10px;
             }
         }
-    .folder.description{
-        display: none;
-        }
     .folder img{
         width: 100%;
         margin-bottom: 5px;
@@ -173,6 +171,52 @@
             position: static;
           	}
      	}
+     	
+     /* DESCRIPTION */
+     .stickies-container{
+         width: 300px;
+         overflow: hidden;
+         border: 2px solid #b9a937;
+         box-sizing:border-box;
+         position: absolute;
+         z-index: 9999;
+         top: 20px;
+        left: calc(100% - 330px);
+        }
+     .stickies{
+         width: 100%;
+         overflow: hidden;
+         background-color: #fdf3a7;
+         font-family: Lucida Grande;
+         font-size: 12px;
+         padding: 10px;
+        }
+    .stickies-meta{
+        height: 15px;
+        width: 100%;
+        display: block;
+        background-color: #fbe960;
+        box-sizing:border-box;
+        border-bottom: 2px solid #b9a937;
+        }
+    .stickies-icon{
+        width: 11px;
+        height: 11px;
+        background-image: url(http://static.tumblr.com/ly7no2u/lxZop6s6c/stickies-icon.png);
+        background-size: 100% auto;
+    }
+     @media screen and (max-width: 900px){
+         .stickies-container{
+             width: 100%;
+            max-width: 500px;
+            position: relative;
+            top: 0 !important;
+            left: 50% !important;
+            margin: 0 0 20px 0 !important;
+            transform: translateX(-50%);
+            display: block;
+            }
+        }
         
     /* POSTS */
     
@@ -909,13 +953,9 @@
 	<div id="wrap">
 		<div id="head">
 			<div class="folder">
-				<a href="/"><img src="http://static.tumblr.com/ly7no2u/J2Cogr10i/folder.png" alt="{Title}">{Title}</a>
-            		</div>
-			{block:Description}
-				<div class="folder description">
-					<a href="/"><img src="http://static.tumblr.com/ly7no2u/J2Cogr10i/folder.png" alt="{Description}">{Description}</a>
-            			</div>
-            		{/block:Description}
+				<a href="{LinkURL}"><img src="http://static.tumblr.com/ly7no2u/J2Cogr10i/folder.png" alt="{Title}">{Title}</a>
+            </div>
+             
             {block:HasPages}
             	{block:Pages}
             		<div class="folder">
@@ -941,7 +981,23 @@
          		</div>
          	{/block:Pagination}
       	</div> <!-- End #Head -->
+      	
+      	
+        
 		<div id="content">
+		{block:IfShowDescription}
+      	{block:Description}
+            <div class="stickies-container {block:IndexPage}draggable{/block:IndexPage}">
+                <div class="stickies-meta">
+                    <div class="stickies-icon"></div>
+                </div>
+                <div class="stickies"> 
+                {Description}
+                </div>
+                
+            </div>
+        {/block:Description}
+        {/block:IfShowDescription}
             {block:Posts}
                 <div class="post {PostType} {block:IndexPage}draggable{/block:IndexPage}">
                     <div class="banner-left {PostType}"></div>
@@ -976,7 +1032,7 @@
                             </div>
                         </div> <!-- End Meta -->
                         <div class="content-container">
-                            <a href="{block:PermalinkPage}{LinkURL}{/block:PermalinkPage}{block:IndexPage}{Permalink}{/block:IndexPage}" alt="{PhotoAlt}"><img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" width="100%"/></a>
+                            <img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" width="100%"/>
                         </div>
                     {/block:Photo}
     
@@ -1000,7 +1056,7 @@
                                 <div class="custom-pager"></div>
                                 {block:Photos}
                                     <div class="slideshow-container">
-                                        <a href="{block:PermalinkPage}{LinkURL}{/block:PermalinkPage}{block:IndexPage}{Permalink}{/block:IndexPage}" alt="{PhotoAlt}"><img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" width="100%" class="photoset-image"/></a>
+                                        <img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" width="100%" class="photoset-image"/>
                                     </div>
                                 {/block:Photos}
                             </div>
