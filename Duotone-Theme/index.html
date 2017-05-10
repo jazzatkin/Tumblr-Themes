@@ -58,15 +58,18 @@
         }
     /* Normalize */ 
     p{
-        margin: 20px 0px 0px 0px;
+        margin: 0px 0px 20px 0px;
         padding: 0px;
         }
-    p:first-child{
+    p:last-child{
         margin: 0px;
         }
     blockquote{
-        margin: 20px 0;
-        }   
+        margin: 0px;
+        }
+    blockquote + p{
+        margin-top: 20px;
+    }    
     img{
         padding: 0;
         display: block;
@@ -323,11 +326,7 @@
         text-decoration: none;
         border: 0;
         }  
-     .post-body img{
-        width: 100%;
-        overflow: hidden;
-        }  
-	    
+     
      /* Photo */ 
      
      .imageWrapper{
@@ -431,7 +430,9 @@
         }
         
     /* Notes */
-    
+    a.avatar_frame {
+        display: none !important;
+        }
     .note-container{
         width: 100%;
         overflow: hidden;
@@ -549,7 +550,7 @@
                 
                         {block:Photoset}
                             {block:Photos}
-     	                      <img src="{PhotoURL-500}" width="100%" class="photoset-img" alt="{PhotoAlt}" />  
+     x                       <img src="{PhotoURL-500}" width="100%" class="photoset-img" alt="{PhotoAlt}" />  
                                 {block:Caption}
                                     <div class="caption">
                                         {Caption}
