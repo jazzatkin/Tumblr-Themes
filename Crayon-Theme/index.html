@@ -1241,6 +1241,15 @@
         	Theme by <a href="http://no2everything.tumblr.com">JAZZatkin</a>
         </div>
 
+	<script type="text/javascript">
+  		var iframes = document.getElementsByTagName('iframe');
+            	for (var i = 0; i < iframes.length; ++i) {
+                var iframe = iframes[i];
+                var players = /soundcloud.com/;
+                if (iframe.src.search(players) !== -1) iframe.width = '100%';
+                }
+	</script>
+	    
     	<script type="text/javascript">
 			(function() {
 			// Main content container
