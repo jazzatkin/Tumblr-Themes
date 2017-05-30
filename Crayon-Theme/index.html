@@ -24,7 +24,9 @@
         <meta name="if:Infinite Scroll" content="1">
         <meta name="if:Display Links" content="1" />
         <meta name="if:Description In Header" content="1" />
-        <meta name="if:Full Width Posts" content="0" />
+        <meta name="select:Layout" content="full" title="Full">
+        <meta name="select:Layout" content="wide" title="Wide">
+        <meta name="select:Layout" content="narrow" title="Narrow">
         <meta name="if:Archive Link" content="1" />
         <meta name="if:Ask Link" content="1" />
         <meta name="text:Custom Link 1" content="Theme">
@@ -52,6 +54,14 @@
 
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.min.js"></script>
 
+        <script type="text/javascript">
+  		    var iframes = document.getElementsByTagName('iframe');
+            for (var i = 0; i < iframes.length; ++i) {
+                var iframe = iframes[i];
+                var players = /.com/;
+                if (iframe.src.search(players) !== -1) iframe.width = '100%';
+                }
+  		</script>
      	<style type="text/css">
 			html, body{
 				margin:0;
@@ -66,15 +76,20 @@
                 line-height: 1.5em;
                 }
            	/* Container Structure */
-            .container{
-                width: calc(100% - 80px);
-                overflow: hidden;
-                margin: 40px;
-                {block:IfFullWidthPosts}
+            .container.full{
                 width: calc(100% - 0px);
                 margin: 0px;
-                {/block:IfFullWidthPosts}
                 }
+            .container.wide{
+                width: calc(100% - 50px);
+                overflow: hidden;
+                margin: 25px;
+                }
+            .container.narrow{
+                width: calc(100% - 100px);
+                overflow: hidden;
+                margin: 50px;
+                }    
             /* Basics */
             a{
              	color: #FFF;
@@ -120,14 +135,20 @@
                 float: left;
                 position: relative;
                 padding: 0;
-                width: calc(50% - 80px);
                 overflow: hidden;
-                margin: 40px;
-                {block:IfFullWidthPosts}
+                }
+            .post.full{
                 width: calc(50% - 0px);
                 margin: 0px;
-                {/block:IfFullWidthPosts}
+                }    
+            .post.wide{
+                width: calc(50% - 50px);
+                margin: 25px;
                 }
+            .post.narrow{
+                width: calc(50% - 100px);
+                margin: 50px;
+                }    
             .post a{
                 padding-bottom: 2px;
                 border-bottom: 1px solid #FFF;
@@ -137,14 +158,18 @@
                 border-bottom: 1px solid {color:Link Hover};
                 }
             @media screen and (max-width: 800px){
-                .post{
-                    width: calc(100% - 60px);
-                    overflow: hidden;
-                    margin: 30px;
-                    {block:IfFullWidthPosts}
+                .post.full{
                     width: calc(100% - 0px);
+                    overflow: hidden;
                     margin: 0px;
-                    {/block:IfFullWidthPosts}
+                    }
+                .post.wide{
+                    width: calc(100% - 0px);
+                    margin: 0 0 25px 0;
+                    }
+                .post.narrow{
+                    width: calc(100% - 0px);
+                    margin: 0 0 50px 0;
                     }
                 }
              /* Header */
@@ -158,10 +183,10 @@
                 {block:IfPostBorders}
            		border: 6px solid #000 !important;
            		{/block:IfPostBorders}
-           		{block:IfFullWidthPosts}
-       			background-color: {color:Background Color} !important;
-     			{/block:IfFullWidthPosts}
                 }
+           	.post.full.title{
+       			background-color: {color:Background Color} !important;
+                }  
             .post.title h1 a{
          		text-decoration: none;
                	padding: 0;
@@ -214,16 +239,13 @@
 				}
 			.post:nth-child(2){
 				margin-top: 150px;
-				{block:IfFullWidthPosts}
+			    }
+			.post.full:nth-child(2){
 				margin-top: 0px;
-				{/block:IfFullWidthPosts}
 				}
 			@media screen and (max-width: 800px){
 				.post:nth-child(2){
-					margin-top: 40px;
-					{block:IfFullWidthPosts}
 					margin-top: 0px;
-					{/block:IfFullWidthPosts}
                   	}
                  }
            	.post:nth-child(10n+1), .post:nth-child(10n+1) .meta{
@@ -453,7 +475,7 @@
               	width: 100%;
              	height: 100%;
                 }
-		/* Audio Posts */
+            /* Audio Posts */
         	.audioWrapper {
             	position: relative;
               	padding-bottom: 56.25%; /* 16:9 */
@@ -466,7 +488,7 @@
               	left: 0;
               	width: 100%;
              	height: 100%;
-                }   
+                }    
          	/* Quote Posts */
            	.quote{
           		box-sizing: border-box;
@@ -609,9 +631,6 @@
            	.credit{
             	width: calc(100% - 200px);
               	margin: 0 auto;
-             	{block:IfFullWidthPosts}
-            	margin-top: 50px;
-             	{/block:IfFullWidthPosts}
              	overflow: hidden;
               	font-size: 20px;
                	color: #000;
@@ -621,6 +640,9 @@
              	padding:  0 0 50px 0;
                	text-align: center;
               	}
+             .credit.full{
+            	margin-top: 50px;
+             }
          	.credit a{
             	border-bottom: 1px solid #000;           
 				color: #000;
@@ -636,9 +658,9 @@
               	width: 100%;
              	overflow: hidden;
              	padding: 0 0 80px 0;
-             	{block:IfFullWidthPosts}
+          	    }
+          	.pagination.full, .perma-pagination.full{
              	padding: 50px 0 0 0;
-              	{/block:IfFullWidthPosts}
             	}   
          	.pagination-inner, .perma-pagination-container{
              	width: calc(100% - 160px);
@@ -664,9 +686,9 @@
               	padding: 80px;
             	background-color: #FFF !important;
            		margin-bottom: 50px;
-             	{block:IfFullWidthPosts}
+           	    }
+             .note-section.full{
                	margin-top: 50px;
-             	{/block:IfFullWidthPosts}
              	}
         	ol.notes li.note {
             	padding: 0px;
@@ -743,9 +765,9 @@
         </style> 
     </head>
     <body>
-		<div class="container">
+		<div class="container {select:Layout}">
 		
-			<div class="post title">
+			<div class="post {select:Layout} title">
 				<h1><a href="{BlogURL}">{Title}</a></h1>
 				<div class="meta-date-underline"></div>
 				{block:IfDescriptionInHeader}
@@ -781,7 +803,7 @@
 
            	{block:Posts}
            		{block:Text}
-					<div class="post main text">
+					<div class="post {select:Layout} main text">
 						{block:Title}
 						<h3><a href="{Permalink}">{Title}</a></h3>
                             <div class="meta-date-underline"></div>
@@ -820,7 +842,7 @@
                 {/block:Text}
 
                 {block:Photo}
-                    <div class="post main photo">
+                    <div class="post {select:Layout} main photo">
                   		<img src="{PhotoURL-500}" alt="{PhotoAlt}" width="100%"/>
                          {block:IndexPage}
                    			<div class="meta">
@@ -855,7 +877,7 @@
                	{/block:Photo}
 
                 {block:Panorama}
-                    <div class="post main panorama">
+                    <div class="post {select:Layout} main panorama">
                         {LinkOpenTag}
                         	<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>
                        	{LinkCloseTag}
@@ -893,7 +915,7 @@
 
                 {block:Photoset}
                		{block:IndexPage}
-                        <div class="post main photoset">
+                        <div class="post {select:Layout} main photoset">
                         	<ul id="photoset">
                     {/block:IndexPage}
 
@@ -959,7 +981,7 @@
                 {/block:Photoset}
 
                 {block:Quote}
-                    <div class="post main quote">
+                    <div class="post {select:Layout} main quote">
                         <div class="post-quote">
                             <span class="quote-mark-left">“</span>{Quote}<span class="quote-mark-right">&#8222;</span>
                         </div>
@@ -995,7 +1017,7 @@
                 {/block:Quote}
 
                 {block:Link}
-                    <div class="post main link">
+                    <div class="post {select:Layout} main link">
                         <a href="{URL}" class="link" {Target}>
                             {block:Thumbnail}
                             	<div class="link-thumb">
@@ -1045,7 +1067,7 @@
                 {/block:Link}
 
                 {block:Chat}
-                    <div class="post main chat">
+                    <div class="post {select:Layout} main chat">
                         {block:Title}
                             <h3><a href="{Permalink}">{Title}</a></h3>
                             <div class="meta-date-underline"></div>
@@ -1093,7 +1115,7 @@
                 {/block:Chat}
 
                 {block:Video}
-                    <div class="post main video">
+                    <div class="post {select:Layout} main video">
                         <div class="videoWrapper">
                         {VideoEmbed-700}
                         </div>
@@ -1130,7 +1152,8 @@
                 {/block:Video}
 
                 {block:Audio}
-                    <div class="post main audio">
+               
+                    <div class="post {select:Layout} main audio">
                         <div class="audioWrapper">
                         {AudioEmbed}
                         </div>
@@ -1167,7 +1190,7 @@
                 {/block:Audio}
 
                 {block:Answer}
-                    <div class="post main post-question">
+                    <div class="post {select:Layout} main post-question">
                         <div class="question-container">
                             <div class="question">
                                 <div class="asker">{Asker} asked:</div>
@@ -1217,7 +1240,7 @@
         </div> <!-- End Container --> 
 
         {block:PermalinkPagination} 
-        	<div class="perma-pagination">
+        	<div class="perma-pagination {select:Layout}">
             	<div class="perma-pagination-container">
                 	{block:NextPost}
                 		<a href="{NextPost}" id="next">&larr; Newer</a>
@@ -1230,7 +1253,7 @@
         {/block:PermalinkPagination}
 
         {block:Pagination}
-        	<div class="pagination {block:IfInfiniteScroll}infinite{/block:IfInfiniteScroll}">
+        	<div class="pagination {select:Layout} {block:IfInfiniteScroll}infinite{/block:IfInfiniteScroll}">
             	<div class="pagination-inner">
             		{block:PreviousPage}
             		<a href="{PreviousPage}" id="prev">&larr; Previous</a>
@@ -1243,27 +1266,20 @@
         {/block:Pagination}
         
         {block:PostNotes} 
-        	<div class="note-section">
+        	<div class="note-section {select:Layout}">
                 <div class="note-container">
                     {PostNotes}
                	</div>
             </div>
         {/block:PostNotes} 
 
-        <div class="credit">
+        <div class="credit {select:Layout}">
         	<div class="meta-date-underline"></div>
         	Theme by <a href="http://no2everything.tumblr.com">JAZZatkin</a>
         </div>
 
-	<script type="text/javascript">
-  		var iframes = document.getElementsByTagName('iframe');
-            	for (var i = 0; i < iframes.length; ++i) {
-                var iframe = iframes[i];
-                var players = /soundcloud.com/;
-                if (iframe.src.search(players) !== -1) iframe.width = '100%';
-                }
-	</script>
-	    
+      
+  		
     	<script type="text/javascript">
 			(function() {
 			// Main content container
@@ -1297,9 +1313,8 @@
 					$container.masonry( 'appended', $newElems, true );
 					});
 				});
-
 			})();
-  		</script>	
+  		</script>
+  		
 	</body>
 </html>
-
