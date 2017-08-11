@@ -58,7 +58,7 @@
 		#content{
             width: calc(100% - 110px);
             align-items: stretch;
-            margin-top: 20px;
+            margin-top: 70px;
             padding-right: 20px;
             box-sizing: border-box;
             }
@@ -67,14 +67,7 @@
         #content{
             width: 500px;
             padding-right: 0px;
-            margin: 0 auto;
-            }
-        }
-    @media screen and (max-width: 650px){
-        #content{
-            width: 500px;
-            padding-right: 0px;
-            margin: 0 auto;
+            margin: 70px auto 0px auto;
             }
         }
        @media screen and (max-width: 556px){
@@ -180,7 +173,7 @@
          box-sizing:border-box;
          position: absolute;
          z-index: 9999;
-         top: 20px;
+         top: 70px;
         left: calc(100% - 330px);
         }
      .stickies{
@@ -575,23 +568,23 @@
         background-image: url('http://static.tumblr.com/ly7no2u/qi8ogrso2/footer-video.png');
         background-size: auto 100%;
         display: block;
-        position: relative;
+        position: relative !important;
         z-index: -2;
     	}
-    .banner-right.video{
-        background-image: url('http://static.tumblr.com/ly7no2u/FJPogrsx0/footer-video-right.png') 
+    .banner-bottom.video .banner-right{
+        background-image: url('http://static.tumblr.com/ly7no2u/FJPogrsx0/footer-video-right.png');
         background-size: auto 35px;
         background-repeat: no-repeat;
         background-position: bottom right;
         position: absolute;
-        bottom: 0;
+        bottom: 0px;
         right: 0;
         display: block;
         width: 50%;
         height: 110px;
         z-index: -1;
         }
-    .banner-left.video{
+    .banner-bottom.video .banner-left{
         background-image: url('http://static.tumblr.com/ly7no2u/GPWogrsut/footer-video-left.png'); 
         background-size: auto 35px;
         background-repeat: no-repeat;
@@ -908,6 +901,10 @@
         .post-notes-container{
             width: 100%;
             }
+        .post-notes{
+            float: none !important;
+            margin: 0 auto;
+            }
         }
     .post-notes-header{
         height: 15px;
@@ -1183,6 +1180,7 @@
                         <div class="banner-left"></div>
                     </div>
                     
+                    {block:IndexPage}
                     {block:IfShowCaption}
                         {block:Caption}
                             <div class="content">
@@ -1190,6 +1188,15 @@
                             </div>
                         {/block:Caption}
                     {/block:IfShowCaption}
+                    {/block:IndexPage}
+                    
+                    {block:PermalinkPage}
+                     {block:Caption}
+                            <div class="content">
+                                {Caption}
+                            </div>
+                        {/block:Caption}
+                    {/block:PermalinkPage}
     
                     {block:IfShowNoteCount}
                         <div class="info">
